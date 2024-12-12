@@ -6,13 +6,13 @@
 /*   By: seizquie <seizquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 17:59:22 by seizquie          #+#    #+#             */
-/*   Updated: 2024/12/10 19:06:08 by seizquie         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:45:47 by seizquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_converter(va_list args, char const format)
+static int	ft_converter(va_list args, char const format)
 {
 	int	size;
 
@@ -21,6 +21,8 @@ int	ft_converter(va_list args, char const format)
 		size += ft_putchar(va_arg(args, int));
 	else if (format == 's')
 		size += ft_putstr(va_arg(args, char *));
+	else if (format == 'p')
+		size += convert_to_hex((size_t)va_arg(args, void*), 'x', 1);
 	return(size);
 }
 

@@ -6,7 +6,7 @@
 /*   By: seizquie <seizquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 18:00:24 by seizquie          #+#    #+#             */
-/*   Updated: 2024/12/10 18:32:24 by seizquie         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:27:22 by seizquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,18 @@ int	ft_putstr(char *s)
 	}
 
 		
+}
+
+int	convert_to_hex(size_t	n, char const	format, int pointer)
+{
+	int	chars_to_print;
+
+	chars_to_print = 0;
+	if(pointer && n == 0)
+		return(ft_putstr("(nil)"));
+	else if(pointer)
+		chars_to_print += ft_putstr("0x");
+	if(n == 0)
+		return(chars_to_print + ft_putchar('0'));
+	
 }
