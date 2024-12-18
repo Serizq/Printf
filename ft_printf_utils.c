@@ -6,7 +6,7 @@
 /*   By: seizquie <seizquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 18:00:24 by seizquie          #+#    #+#             */
-/*   Updated: 2024/12/16 19:27:26 by seizquie         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:44:30 by seizquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_putstr(char *s)
 		write(1, "(null)", 6);
 		return (6);
 	}
+	return (ft_strlen(s));
 }
 
 size_t	ft_putnbr_fd(long n, int fd)
@@ -37,24 +38,22 @@ size_t	ft_putnbr_fd(long n, int fd)
 	size_t	i;
 
 	i = 0;
-	if (n == (-__LONG_MAX__) - 1)
+	if (n == LONG_MIN)
 	{
-		ft_putchar_fd('-', fd);
-		ft_putchar_fd('9', fd);
+		ft_putchar('-');
+		ft_putchar('9');
 		i += 2;
-		n = 223372036854775808;
+		n = -(LONG_MIN / 10);
 	}
 	if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
+		ft_putchar('-');
 		i++;
 		n = -n;
 	}
 	if (n >= 10)
-	{
 		i += ft_putnbr_fd(n / 10, fd);
-	}
-	ft_putchar_fd((n % 10) + '0', fd);
+	ft_putchar((n % 10) + '0');
 	return (i + 1);
 }
 
@@ -80,3 +79,12 @@ int	convert_to_hex(size_t n, char const format, int pointer)
 	return (chars_to_print);
 }
 
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
+}

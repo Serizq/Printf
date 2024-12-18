@@ -6,13 +6,13 @@
 /*   By: seizquie <seizquie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 17:59:22 by seizquie          #+#    #+#             */
-/*   Updated: 2024/12/16 19:09:18 by seizquie         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:43:29 by seizquie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_converter(va_list args, char const format)
+int	ft_converter(va_list args, char const format)
 {
 	int	size;
 
@@ -59,3 +59,27 @@ int	ft_printf(char const *string, ...)
 	va_end(args);
 	return (size);
 }
+/*#include <stdio.h>
+
+int	main(void)
+{
+	int	results;
+
+	results = ft_printf("Hola %s\n", "Sergio");
+	printf("Caracteres impresos: %i\n", results);
+
+	results = ft_printf("El carácter printeado es:%c\n", 'A');
+	printf("Caráteres impresos:%d\n", results);
+
+	results = ft_printf("Varios identificadores: %u, %d, %c, %s\n", 27, -88,
+			'r', "Sergio");
+	printf("Caracteres impresos:%i\n", results);
+
+	int	x = 25;
+	int	*pointer;
+
+	pointer = &x;
+	results = ft_printf("La dirección de memoria es: %p\n", &x);
+	printf("El valor de x es:%d\n", x);
+	return(0);
+}*/
